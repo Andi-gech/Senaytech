@@ -6,16 +6,14 @@ import mobileframe from "./Asset/mobilepic.png";
 import gooogle from "./Asset/google.png";
 import appstore from "./Asset/appstors.png";
 import qrcode from "./Asset/qr.png";
-import mobileapp from "./Asset/mobileapp.jpg";
-import webdev from "./Asset/webdev.jpg";
-import tgbot from "./Asset/tgbot.jpg";
+
 import user1 from "./Asset/user1.jpg";
 import user2 from "./Asset/user2.jpg";
 import user4 from "./Asset/user4.jpg";
 
 import { motion } from "framer-motion";
 import { FaLaptop } from "react-icons/fa";
-import { FaAppStore } from "react-icons/fa";
+
 import {
   IoLogoGooglePlaystore,
   IoLogoFacebook,
@@ -25,7 +23,7 @@ import {
   IoLogoGoogle,
   IoCloseCircle,
 } from "react-icons/io5";
-import { BsRobot, BsTelegram, IconName } from "react-icons/bs";
+import { BsRobot, BsTelegram } from "react-icons/bs";
 import CommentCard from "./CommentCard";
 import { useRef, useState } from "react";
 
@@ -107,15 +105,12 @@ function App() {
               <IoLogoInstagram size={30} id="icon" />
             </div>
             <div className="socialcard">
-              {" "}
               <IoLogoGithub size={30} id="icon" />
             </div>
             <div className="socialcard">
-              {" "}
               <IoLogoLinkedin size={30} id="icon" />
             </div>
             <div className="socialcard">
-              {" "}
               <IoLogoGoogle size={30} id="icon" />
             </div>
           </div>
@@ -127,7 +122,7 @@ function App() {
       )}
 
       <header>
-        <img src={logo} width={100} />
+        <img alt="images" src={logo} width={100} />
         <ul>
           <li onClick={() => scrollToRef(homesectionref)}>
             <span id="activate">Home</span>
@@ -166,18 +161,15 @@ function App() {
         <h1>Services we Offer</h1>
         <div className="inline">
           <div className="card">
-            {/* <img src={webdev} width={100} /> */}
             <FaLaptop size={36} />
             Website Development
           </div>
           <div className="card">
             <IoLogoGooglePlaystore size={36} />
-            {/* <img src={mobileapp} width={100} /> */}
             Mobile App Dev
           </div>
           <div className="card">
             <BsRobot size={36} />
-            {/* <img src={tgbot} width={100} /> */}
             Telegram Bots
           </div>
         </div>
@@ -219,6 +211,7 @@ function App() {
             }}
           >
             <img
+              alt="images"
               src={mobileframe}
               height={400}
               style={{ rotate: "30deg", zIndex: 8 }}
@@ -234,14 +227,16 @@ function App() {
               <h1>Senay Amharic keyboard </h1>
               <p>Amharic keyboard to write Amharic language fast and </p>
               <img
+                alt="images"
                 src={appstore}
                 className="image"
                 width={120}
                 style={{ marginBottom: -25 }}
               />
-              <img className="image" src={gooogle} width={120} />
+              <img className="image" alt="images" src={gooogle} width={120} />
             </div>
             <img
+              alt="images"
               src={qrcode}
               width={300}
               height={300}
@@ -250,7 +245,7 @@ function App() {
           </div>
         </div>
         <div className="aboutas" ref={abouusSectionRef}>
-          <img src={logo} width={100} />
+          <img alt="images" src={logo} width={100} />
           <p>
             <span style={{ fontWeight: "bold", color: "#61dafb" }}>
               Senay Tech{" "}
@@ -268,7 +263,7 @@ function App() {
           {data.map((p, index) => {
             return (
               <>
-                {active == p.id && (
+                {active === p.id && (
                   <CommentCard
                     name={p.name}
                     message={p.comment}
