@@ -92,7 +92,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setactive((prevActive) => (prevActive + 1) % numDots);
-    }, 2400);
+    }, 2900);
 
     return () => clearInterval(interval);
   }, [numDots]);
