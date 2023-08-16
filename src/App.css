@@ -116,6 +116,8 @@ ul {
   color: black;
 
   height: 700px;
+  background: rgb(2, 9, 21);
+  background: "linear-gradient(90deg,rgba(2, 0, 36, 1) 0%,rgba(26, 30, 29, 1) 35%,rgba(49, 59, 61, 1) 100%)";
 
   display: flex;
   flex-direction: row;
@@ -124,7 +126,7 @@ ul {
   justify-content: space-between;
 }
 .services h1 {
-  color: rgb(37, 35, 35);
+  color: rgb(255, 255, 255);
 }
 .projects {
   background: rgb(2, 9, 21);
@@ -201,6 +203,11 @@ li {
 }
 .commentcard p {
   width: 80%;
+  height: 100px;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
 }
 #activate {
   color: #61dafb;

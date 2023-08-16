@@ -67,7 +67,7 @@ function App() {
       id: 1,
       name: "janny",
       comment:
-        "Outstanding work by Senay Tech! They created a stunning website and app that exceeded our expectations. Impressive design, seamless functionality, and excellent communication. Highly recommended!",
+        "Outstanding work by Senay Tech! They created a stunning website and app that exceeded our expectations.Impressivedesign,seamlessfunctionality, and excellent communication. Highly recommended!",
       picture: user1,
     },
     {
