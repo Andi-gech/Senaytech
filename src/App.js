@@ -29,6 +29,7 @@ import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [contact, setcontact] = useState(false);
+  const [activeheader, setactiveheader] = useState("home");
 
   const scrollToRef = (ref) => {
     if (ref.current) {
@@ -156,14 +157,37 @@ function App() {
       <header>
         <img alt="images" src={logo} width={100} />
         <ul>
-          <li onClick={() => scrollToRef(homesectionref)}>
-            <span id="activate">Home</span>
-          </li>
-          <li onClick={() => scrollToRef(servicesectionref)}>Services</li>
-          <li onClick={() => scrollToRef(abouusSectionRef)}>About-us</li>
           <li
             onClick={() => {
+              scrollToRef(homesectionref);
+              setactiveheader("home");
+            }}
+          >
+            <span id={activeheader === "home" ? "activate" : ""}>Home</span>
+          </li>
+          <li
+            onClick={() => {
+              scrollToRef(servicesectionref);
+              setactiveheader("service");
+            }}
+            id={activeheader === "service" ? "activate" : ""}
+          >
+            Services
+          </li>
+          <li
+            id={activeheader === "aboutus" ? "activate" : ""}
+            onClick={() => {
+              scrollToRef(abouusSectionRef);
+              setactiveheader("aboutus");
+            }}
+          >
+            About-us
+          </li>
+          <li
+            id={activeheader === "testimonial" ? "activate" : ""}
+            onClick={() => {
               scrollToRef(testimonialSectionRef);
+              setactiveheader("testimonial");
             }}
           >
             Testmonials
