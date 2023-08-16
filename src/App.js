@@ -25,7 +25,7 @@ import {
 } from "react-icons/io5";
 import { BsRobot, BsTelegram } from "react-icons/bs";
 import CommentCard from "./CommentCard";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [contact, setcontact] = useState(false);
@@ -62,8 +62,40 @@ function App() {
       comment: "Wow!i Amazed by your work keep up what you are doing",
       picture: user4,
     },
+    {
+      id: 1,
+      name: "janny",
+      comment:
+        "Outstanding work by Senay Tech! They created a stunning website and app that exceeded our expectations. Impressive design, seamless functionality, and excellent communication. Highly recommended!",
+      picture: user1,
+    },
+    {
+      id: 2,
+      name: "Alen",
+      comment:
+        "Thank you Senay-tech for  seamless functionality, and excellent communication. Highly recommended!",
+      picture: user2,
+    },
+    {
+      id: 3,
+      name: "robi",
+      comment: "Wow!i Amazed by your work keep up what you are doing",
+      picture: user4,
+    },
   ];
-  const [active, setactive] = useState(data[0].id);
+  const [active, setactive] = useState(0);
+  const numDots = Math.ceil(data.length / 2);
+  const handleDotClick = (index) => {
+    setactive(index);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setactive((prevActive) => (prevActive + 1) % numDots);
+    }, 2400);
+
+    return () => clearInterval(interval);
+  }, [numDots]);
 
   return (
     <div className="App" style={{ backgroundImage: logo }} ref={homesectionref}>
@@ -260,36 +292,37 @@ function App() {
         </div>
         <div className="comments" ref={testimonialSectionRef}>
           <h2>Testemonials</h2>
-          {data.map((p, index) => {
-            return (
-              <>
-                {active === p.id && (
+          <div
+            className="commentlist"
+            style={{
+              marginLeft: -active * 920,
+              transition: "margin-left 0.5s ease",
+            }}
+          >
+            {data.map((p, index) => {
+              return (
+                <div className="ccards">
                   <CommentCard
                     name={p.name}
                     message={p.comment}
                     image={p.picture}
                   />
-                )}
-              </>
-            );
-          })}
-
-          <div className="circle">
-            {data.map((item) => {
-              return (
-                <div
-                  onClick={() => {
-                    setactive(item.id);
-                  }}
-                  className="dots"
-                  style={{
-                    backgroundColor:
-                      active === item.id ? "white" : "transparent",
-                  }}
-                  key={item.id}
-                ></div>
+                </div>
               );
             })}
+          </div>
+
+          <div className="circle">
+            {Array.from({ length: numDots }, (_, index) => (
+              <div
+                onClick={() => handleDotClick(index)}
+                className="dots"
+                style={{
+                  backgroundColor: active === index ? "white" : "transparent",
+                }}
+                key={index}
+              ></div>
+            ))}
           </div>
         </div>
         <motion.div
