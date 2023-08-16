@@ -25,10 +25,11 @@ import {
 } from "react-icons/io5";
 import { BsRobot, BsTelegram } from "react-icons/bs";
 import CommentCard from "./CommentCard";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [contact, setcontact] = useState(false);
+  const [activeheader, setactiveheader] = useState("home");
 
   const scrollToRef = (ref) => {
     if (ref.current) {
@@ -62,8 +63,40 @@ function App() {
       comment: "Wow!i Amazed by your work keep up what you are doing",
       picture: user4,
     },
+    {
+      id: 1,
+      name: "janny",
+      comment:
+        "Outstanding work by Senay Tech! They created a stunning website and app that exceeded our expectations.Impressivedesign,seamlessfunctionality, and excellent communication. Highly recommended!",
+      picture: user1,
+    },
+    {
+      id: 2,
+      name: "Alen",
+      comment:
+        "Thank you Senay-tech for  seamless functionality, and excellent communication. Highly recommended!",
+      picture: user2,
+    },
+    {
+      id: 3,
+      name: "robi",
+      comment: "Wow!i Amazed by your work keep up what you are doing",
+      picture: user4,
+    },
   ];
-  const [active, setactive] = useState(data[0].id);
+  const [active, setactive] = useState(0);
+  const numDots = Math.ceil(data.length / 2);
+  const handleDotClick = (index) => {
+    setactive(index);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setactive((prevActive) => (prevActive + 1) % numDots);
+    }, 2900);
+
+    return () => clearInterval(interval);
+  }, [numDots]);
 
   return (
     <div className="App" style={{ backgroundImage: logo }} ref={homesectionref}>
@@ -124,14 +157,37 @@ function App() {
       <header>
         <img alt="images" src={logo} width={100} />
         <ul>
-          <li onClick={() => scrollToRef(homesectionref)}>
-            <span id="activate">Home</span>
-          </li>
-          <li onClick={() => scrollToRef(servicesectionref)}>Services</li>
-          <li onClick={() => scrollToRef(abouusSectionRef)}>About-us</li>
           <li
             onClick={() => {
+              scrollToRef(homesectionref);
+              setactiveheader("home");
+            }}
+          >
+            <span id={activeheader === "home" ? "activate" : ""}>Home</span>
+          </li>
+          <li
+            onClick={() => {
+              scrollToRef(servicesectionref);
+              setactiveheader("service");
+            }}
+            id={activeheader === "service" ? "activate" : ""}
+          >
+            Services
+          </li>
+          <li
+            id={activeheader === "aboutus" ? "activate" : ""}
+            onClick={() => {
+              scrollToRef(abouusSectionRef);
+              setactiveheader("aboutus");
+            }}
+          >
+            About-us
+          </li>
+          <li
+            id={activeheader === "testimonial" ? "activate" : ""}
+            onClick={() => {
               scrollToRef(testimonialSectionRef);
+              setactiveheader("testimonial");
             }}
           >
             Testmonials
@@ -148,31 +204,49 @@ function App() {
         <p
           style={{
             backgroundColor: "rgb(0, 179, 255)",
-            height: 30,
+            height: 40,
             width: 100,
             alignItems: "center",
             justifyContent: "center",
-            borderRadius: '10px',
-            // paddingTop: '10px'
-         }}
+          }}
         >
-          See More
+          see More
         </p>
       </div>
       <div className="services" ref={servicesectionref}>
-        <h1>Services We Offer</h1>
-        <div className="inline">
-          <div className="card">
-            <FaLaptop size={36} />
-            Website Development
-          </div>
-          <div className="card">
-            <IoLogoGooglePlaystore size={36} />
-            Mobile App Dev
-          </div>
-          <div className="card">
-            <BsRobot size={36} />
-            Telegram Bots
+        <motion.div
+          initial={{ rotate: 0 }}
+          whileInView={{ rotate: [275, 45] }}
+          transition={{ duration: 2 }}
+          style={{
+            height: 400,
+            width: 400,
+            background:
+              "linear-gradient(90deg,rgba(2, 0, 36, 1) 0%,rgba(26, 30, 29, 1) 35%,rgba(49, 59, 61, 1) 100%)",
+            borderRadius: 70,
+            filter: "blur(5px)",
+            position: "relative",
+
+            rotate: "90deg",
+            transform: `rotate(${55}deg)`,
+            transition: "transform 0.3s ease",
+          }}
+        ></motion.div>
+        <div>
+          <h1>Services we Offer</h1>
+          <div className="inline">
+            <div className="card">
+              <FaLaptop size={36} />
+              Website Development
+            </div>
+            <div className="card">
+              <IoLogoGooglePlaystore size={36} />
+              Mobile App Dev
+            </div>
+            <div className="card">
+              <BsRobot size={36} />
+              Telegram Bots
+            </div>
           </div>
         </div>
       </div>
@@ -261,63 +335,44 @@ function App() {
           </p>
         </div>
         <div className="comments" ref={testimonialSectionRef}>
-          <h2>Testimonials</h2>
-          {data.map((p, index) => {
-            return (
-              <>
-                {active === p.id && (
+          <h2>Testemonials</h2>
+          <div
+            className="commentlist"
+            style={{
+              marginLeft: -active * 920,
+              transition: "margin-left 0.5s ease",
+            }}
+          >
+            {data.map((p, index) => {
+              return (
+                <div className="ccards">
                   <CommentCard
                     name={p.name}
                     message={p.comment}
                     image={p.picture}
                   />
-                )}
-              </>
-            );
-          })}
-
-          <div className="circle">
-            {data.map((item) => {
-              return (
-                <div
-                  onClick={() => {
-                    setactive(item.id);
-                  }}
-                  className="dots"
-                  style={{
-                    backgroundColor:
-                      active === item.id ? "white" : "transparent",
-                  }}
-                  key={item.id}
-                ></div>
+                </div>
               );
             })}
           </div>
-        </div>
-        <motion.div
-          initial={{ rotate: 0 }}
-          whileInView={{ rotate: [275, 45] }}
-          transition={{ duration: 2 }}
-          style={{
-            height: 400,
-            width: 400,
-            background:
-              "linear-gradient(90deg,rgba(2, 0, 36, 1) 0%,rgba(26, 30, 29, 1) 35%,rgba(49, 59, 61, 1) 100%)",
-            borderRadius: 70,
-            filter: "blur(5px)",
-            position: "absolute",
-            top: "125%",
-            rotate: "90deg",
-            transform: `rotate(${55}deg)`,
-            transition: "transform 0.3s ease",
-            zIndex: -1,
 
-            left: 0,
-          }}
-        ></motion.div>
+          <div className="circle">
+            {Array.from({ length: numDots }, (_, index) => (
+              <div
+                onClick={() => handleDotClick(index)}
+                className="dots"
+                style={{
+                  backgroundColor: active === index ? "white" : "transparent",
+                }}
+                key={index}
+              ></div>
+            ))}
+          </div>
+        </div>
+
         <div className="footer">
           <div>
-            <p>&copy; Copyright Restricted </p>
+            <p>&copy; copy Right Ristricted </p>
           </div>
           <div className="text">
             <IoLogoFacebook size={30} id="icon" />
