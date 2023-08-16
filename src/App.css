@@ -121,6 +121,9 @@ ul {
 
   justify-content: center;
 }
+.services h1{
+  color: white;
+}
 .projects {
   background: rgb(2, 9, 21);
   background: "linear-gradient(90deg,rgba(2, 0, 36, 1) 0%,rgba(26, 30, 29, 1) 35%,rgba(49, 59, 61, 1) 100%)";
