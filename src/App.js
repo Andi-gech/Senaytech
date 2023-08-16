@@ -148,17 +148,19 @@ function App() {
         <p
           style={{
             backgroundColor: "rgb(0, 179, 255)",
-            height: 40,
+            height: 30,
             width: 100,
             alignItems: "center",
             justifyContent: "center",
-          }}
+            borderRadius: '10px',
+            // paddingTop: '10px'
+         }}
         >
-          see More
+          See More
         </p>
       </div>
       <div className="services" ref={servicesectionref}>
-        <h1>Services we Offer</h1>
+        <h1>Services We Offer</h1>
         <div className="inline">
           <div className="card">
             <FaLaptop size={36} />
@@ -259,7 +261,7 @@ function App() {
           </p>
         </div>
         <div className="comments" ref={testimonialSectionRef}>
-          <h2>Testemonials</h2>
+          <h2>Testimonials</h2>
           {data.map((p, index) => {
             return (
               <>
@@ -315,7 +317,7 @@ function App() {
         ></motion.div>
         <div className="footer">
           <div>
-            <p>&copy; copy Right Ristricted </p>
+            <p>&copy; Copyright Restricted </p>
           </div>
           <div className="text">
             <IoLogoFacebook size={30} id="icon" />
