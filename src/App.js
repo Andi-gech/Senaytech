@@ -147,7 +147,7 @@ function App() {
         <h3>ለፈጣንና ቀልጣፋ አገልግሎት</h3>
         <p
           style={{
-            backgroundColor: "orange",
+            backgroundColor: "rgb(0, 179, 255)",
             height: 40,
             width: 100,
             alignItems: "center",
