@@ -190,19 +190,39 @@ function App() {
         </p>
       </div>
       <div className="services" ref={servicesectionref}>
-        <h1>Services we Offer</h1>
-        <div className="inline">
-          <div className="card">
-            <FaLaptop size={36} />
-            Website Development
-          </div>
-          <div className="card">
-            <IoLogoGooglePlaystore size={36} />
-            Mobile App Dev
-          </div>
-          <div className="card">
-            <BsRobot size={36} />
-            Telegram Bots
+        <motion.div
+          initial={{ rotate: 0 }}
+          whileInView={{ rotate: [275, 45] }}
+          transition={{ duration: 2 }}
+          style={{
+            height: 400,
+            width: 400,
+            background:
+              "linear-gradient(90deg,rgba(2, 0, 36, 1) 0%,rgba(26, 30, 29, 1) 35%,rgba(49, 59, 61, 1) 100%)",
+            borderRadius: 70,
+            filter: "blur(5px)",
+            position: "relative",
+
+            rotate: "90deg",
+            transform: `rotate(${55}deg)`,
+            transition: "transform 0.3s ease",
+          }}
+        ></motion.div>
+        <div>
+          <h1>Services we Offer</h1>
+          <div className="inline">
+            <div className="card">
+              <FaLaptop size={36} />
+              Website Development
+            </div>
+            <div className="card">
+              <IoLogoGooglePlaystore size={36} />
+              Mobile App Dev
+            </div>
+            <div className="card">
+              <BsRobot size={36} />
+              Telegram Bots
+            </div>
           </div>
         </div>
       </div>
@@ -325,27 +345,7 @@ function App() {
             ))}
           </div>
         </div>
-        <motion.div
-          initial={{ rotate: 0 }}
-          whileInView={{ rotate: [275, 45] }}
-          transition={{ duration: 2 }}
-          style={{
-            height: 400,
-            width: 400,
-            background:
-              "linear-gradient(90deg,rgba(2, 0, 36, 1) 0%,rgba(26, 30, 29, 1) 35%,rgba(49, 59, 61, 1) 100%)",
-            borderRadius: 70,
-            filter: "blur(5px)",
-            position: "absolute",
-            top: "125%",
-            rotate: "90deg",
-            transform: `rotate(${55}deg)`,
-            transition: "transform 0.3s ease",
-            zIndex: -1,
 
-            left: 0,
-          }}
-        ></motion.div>
         <div className="footer">
           <div>
             <p>&copy; copy Right Ristricted </p>
