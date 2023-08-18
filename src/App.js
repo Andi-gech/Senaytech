@@ -222,7 +222,7 @@ function App() {
             height: 400,
             width: 400,
             background:
-              "linear-gradient(90deg,rgba(2, 0, 36, 1) 0%,rgba(26, 30, 29, 1) 35%,rgba(49, 59, 61, 1) 100%)",
+              " linear-gradient(90deg,rgba(2, 0, 36, 0.171) 0%,rgba(9, 9, 121, 0.151) 35%,rgba(0, 213, 255, 0.13) 100%)",
             borderRadius: 70,
             filter: "blur(5px)",
             position: "relative",
