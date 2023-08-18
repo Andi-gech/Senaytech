@@ -30,18 +30,6 @@ import { useEffect, useRef, useState } from "react";
 function App() {
   const [contact, setcontact] = useState(false);
   const [activeheader, setactiveheader] = useState("home");
-
-  const scrollToRef = (ref) => {
-    if (ref.current) {
-      ref.current.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-  };
-  const abouusSectionRef = useRef(null);
-  const testimonialSectionRef = useRef(null);
-  const servicesectionref = useRef(null);
-  const homesectionref = useRef(null);
   const data = [
     {
       id: 1,
@@ -84,6 +72,18 @@ function App() {
       picture: user4,
     },
   ];
+  const scrollToRef = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+  const abouusSectionRef = useRef(null);
+  const testimonialSectionRef = useRef(null);
+  const servicesectionref = useRef(null);
+  const homesectionref = useRef(null);
+
   const [active, setactive] = useState(0);
   const numDots = Math.ceil(data.length / 2);
   const handleDotClick = (index) => {
@@ -207,6 +207,8 @@ function App() {
             height: 40,
             width: 100,
             alignItems: "center",
+            display: "flex",
+            borderRadius: 10,
             justifyContent: "center",
           }}
         >
