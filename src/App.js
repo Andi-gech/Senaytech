@@ -12,7 +12,6 @@ import user2 from "./Asset/user2.jpg";
 import user4 from "./Asset/user4.jpg";
 
 import { motion } from "framer-motion";
-import { FaLaptop } from "react-icons/fa";
 
 import {
   IoLogoGooglePlaystore,
@@ -22,6 +21,7 @@ import {
   IoLogoGithub,
   IoLogoGoogle,
   IoCloseCircle,
+  IoCode,
 } from "react-icons/io5";
 import { BsRobot, BsTelegram } from "react-icons/bs";
 import CommentCard from "./CommentCard";
@@ -235,17 +235,47 @@ function App() {
         <div>
           <h1>Services we Offer</h1>
           <div className="inline">
-            <div className="card">
-              <FaLaptop size={36} />
-              Website Development
+            <div className="container">
+              <div className="foldcard">
+                <div className="front">
+                  <IoCode size={36} />
+                  Website development
+                </div>
+
+                <div className="back">
+                  <p>Ecommerce website</p>
+                  <p> portfolio website</p>
+                  <p>School website</p>
+                  <p> for your company </p>
+                  <p id="activate">see showcase</p>
+                </div>
+              </div>
             </div>
-            <div className="card">
-              <IoLogoGooglePlaystore size={36} />
-              Mobile App Dev
+            <div className="container">
+              <div className="foldcard">
+                <div className="front">
+                  <IoLogoGooglePlaystore size={36} />
+                  Mobile App Dev
+                </div>
+                <div className="back">
+                  <p>school system</p>
+                  <p> tools</p>
+                  <p>music lyrics app</p>
+                  <p> for your company </p>
+                  <p id="activate">see showcase</p>
+                </div>
+              </div>
             </div>
-            <div className="card">
-              <BsRobot size={36} />
-              Telegram Bots
+            <div className="container">
+              <div className="foldcard">
+                <div className="front">
+                  <BsRobot size={36} />
+                  Telegram Bot dev
+                </div>
+                <div className="back">
+                  <p>unavailable</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
